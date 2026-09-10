@@ -55,9 +55,9 @@ Só uma chamada, e só se você usar o shortcode `[cda_instalacoes]`: uma consul
 
 == Screenshots ==
 
-1. Tela de upload: envio de um PDF/DOCX/TXT para conversão.
-2. Documento convertido, com os controles de tamanho de texto, alto contraste e leitura em voz alta.
-3. Listagem "Todos os Documentos", com a coluna de shortcode de cada conversão.
+1. Painel administrativo: listagem "Todos os Documentos", com a coluna de shortcode de cada conversão.
+2. Documento convertido, com os controles de tamanho de texto, alto contraste e o botão de leitura em voz alta.
+3. Leitura em voz alta em andamento, com o parágrafo atual destacado na página.
 
 == Changelog ==
 
