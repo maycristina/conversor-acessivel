@@ -1,4 +1,4 @@
-# Conversor de Documentos Acessível
+# Conversor Acessível
 
 Plugin WordPress que converte arquivos PDF, Word (.docx) e TXT em páginas
 responsivas e acessíveis (WCAG 2.1 AA), com leitura em voz alta pelo
@@ -86,30 +86,37 @@ composer.json                  Dependências PHP
   "Todos os Documentos" continua normal, com uma coluna extra mostrando o
   shortcode de cada um.
 
-## Hardening (.htaccess / index.php)
+## Hardening (index.php + guard ABSPATH)
 
-- `wp-plugin-conversor-acessivel/.htaccess` (raiz do plugin) nega acesso
-  direto via URL a qualquer `.php` do plugin, incluindo os das dependências
-  em `vendor/`. Nenhum desses arquivos deveria ser acessado assim — o
-  WordPress só os carrega via `include`/`require` no servidor —, e cada
-  arquivo já tem um guard `if (!defined('ABSPATH')) exit;` como proteção
-  principal (funciona em qualquer servidor). O `.htaccess` é defesa em
-  profundidade e só tem efeito em Apache/LiteSpeed com `AllowOverride`
-  habilitado; **não se aplica a Nginx**.
+- O WordPress.org **não aceita arquivos ocultos** (dotfiles) na submissão do
+  plugin — um `.htaccess` estático na raiz do plugin é rejeitado pela
+  verificação automática ("Hidden files are not permitted"). Por isso a
+  proteção principal contra acesso direto via URL é o guard
+  `if (!defined('ABSPATH')) exit;` no topo de cada arquivo PHP, que funciona
+  em qualquer servidor (Apache, Nginx, LiteSpeed) e não depende de nenhum
+  arquivo extra.
 - Um `index.php` vazio ("silence is golden") em cada subpasta evita listagem
-  de diretório de forma universal (funciona independente do servidor).
+  de diretório de forma universal — não é um dotfile, então não tem problema
+  incluir na submissão.
 - A pasta de upload (`wp-content/uploads/cda-documentos/`) recebe seu próprio
-  `.htaccess` + `index.php` na primeira vez que é usada
-  (`CDA_Admin::protect_upload_dir()`), negando **execução de scripts**
-  (`.php`, `.phtml`, `.cgi`, etc.) — mas não bloqueando acesso geral, já que
-  o PDF/DOCX/TXT original precisa continuar servível quando a opção "apagar
-  original após converter" está desligada.
+  `.htaccess` + `index.php` gerados **em tempo de execução**, na primeira vez
+  que é usada (`CDA_Admin::protect_upload_dir()`), negando **execução de
+  scripts** (`.php`, `.phtml`, `.cgi`, etc.) — mas não bloqueando acesso
+  geral, já que o PDF/DOCX/TXT original precisa continuar servível quando a
+  opção "apagar original após converter" está desligada. Como esse
+  `.htaccess` é criado pelo PHP no servidor do usuário (não vai dentro do
+  zip do plugin), a regra do WordPress.org contra dotfiles não se aplica a
+  ele.
 
 ## Publicando no WordPress.org (necessário para o badge de instalações)
 
-1. Revise `readme.txt` (headers, tags, `Stable tag`).
+1. Revise `readme.txt` (headers, tags, `Stable tag`, `Tested up to` — precisa
+   bater com a versão atual do WordPress, senão a verificação automática
+   reprova o envio).
 2. Rode `composer install --no-dev` e gere o zip do plugin incluindo a pasta
-   `vendor/` (o WordPress.org não roda Composer).
+   `vendor/` (o WordPress.org não roda Composer), **excluindo** `.git/`,
+   `.gitignore` e `.wordpress-org/` — a verificação automática rejeita
+   qualquer arquivo/pasta oculto (começando com `.`) dentro do zip.
 3. Siga o processo de submissão em
    https://wordpress.org/plugins/developers/add/.
 4. Depois de aprovado, defina o slug correto em

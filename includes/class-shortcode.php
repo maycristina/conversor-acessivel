@@ -41,7 +41,7 @@ class CDA_Shortcode {
 
 		if ( ! $post || CDA_Post_Type::POST_TYPE !== $post->post_type || 'publish' !== $post->post_status ) {
 			if ( current_user_can( 'edit_posts' ) ) {
-				return '<p>' . esc_html__( 'Conversor de Documentos Acessível: documento não encontrado.', 'conversor-acessivel' ) . '</p>';
+				return '<p>' . esc_html__( 'Conversor Acessível: documento não encontrado.', 'conversor-acessivel' ) . '</p>';
 			}
 			return '';
 		}

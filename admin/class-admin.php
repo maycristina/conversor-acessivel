@@ -78,7 +78,7 @@ class CDA_Admin {
 		$settings = self::get_settings();
 		?>
 		<div class="wrap">
-			<h1><?php esc_html_e( 'Conversor de Documentos Acessível', 'conversor-acessivel' ); ?></h1>
+			<h1><?php esc_html_e( 'Conversor Acessível', 'conversor-acessivel' ); ?></h1>
 			<p><?php esc_html_e( 'Envie um arquivo PDF, DOCX ou TXT para gerar uma página acessível (com leitura em voz alta) e um shortcode para publicá-la.', 'conversor-acessivel' ); ?></p>
 
 			<form method="post" enctype="multipart/form-data" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">

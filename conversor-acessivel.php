@@ -1,7 +1,7 @@
 <?php
 /**
- * Plugin Name:       Conversor de Documentos Acessível
- * Plugin URI:         https://github.com/maycristina/contatos
+ * Plugin Name:       Conversor Acessível
+ * Plugin URI:         https://github.com/maycristina/conversor-acessivel
  * Description:       Converte arquivos PDF, Word e TXT em páginas responsivas e acessíveis (com leitura em voz alta) e permite publicá-las via shortcode.
  * Version:            1.0.0
  * Requires at least:  6.0
@@ -70,7 +70,7 @@ function cda_run_plugin() {
 			'admin_notices',
 			function () {
 				echo '<div class="notice notice-error"><p>';
-				echo esc_html__( 'Conversor de Documentos Acessível: as dependências do Composer não foram instaladas. Rode "composer install" na pasta do plugin.', 'conversor-acessivel' );
+				echo esc_html__( 'Conversor Acessível: as dependências do Composer não foram instaladas. Rode "composer install" na pasta do plugin.', 'conversor-acessivel' );
 				echo '</p></div>';
 			}
 		);

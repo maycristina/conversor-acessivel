@@ -1,8 +1,8 @@
-=== Conversor de Documentos Acessível ===
+=== Conversor Acessível ===
 Contributors: maycristina
 Tags: acessibilidade, pdf, docx, shortcode, text-to-speech
 Requires at least: 6.0
-Tested up to: 6.6
+Tested up to: 7.1
 Requires PHP: 7.4
 Stable tag: 1.0.0
 License: GPLv2 or later
@@ -12,7 +12,7 @@ Converte arquivos PDF, Word (.docx) e TXT em páginas responsivas e acessíveis,
 
 == Description ==
 
-O **Conversor de Documentos Acessível** permite que administradores enviem arquivos PDF, DOCX ou TXT pelo painel do WordPress e transforma cada arquivo em uma página HTML responsiva e acessível (WCAG 2.1 AA), com:
+O **Conversor Acessível** permite que administradores enviem arquivos PDF, DOCX ou TXT pelo painel do WordPress e transforma cada arquivo em uma página HTML responsiva e acessível (WCAG 2.1 AA), com:
 
 * Controles de tamanho de texto e alto contraste.
 * Leitura em voz alta usando a Web Speech API do navegador (sem custo de API externa).
