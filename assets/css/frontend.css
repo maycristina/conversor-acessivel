@@ -1,0 +1,244 @@
+/*
+ * Estilos do visualizador de documento acessível.
+ * Segue diretrizes WCAG 2.1 AA: contraste mínimo 4.5:1, foco sempre visível,
+ * medida de linha legível, respeito a prefers-reduced-motion/prefers-contrast.
+ */
+
+.cda-viewer {
+	--cda-fg: #1b1b1b;
+	--cda-bg: #ffffff;
+	--cda-border: #6b6b6b;
+	--cda-accent: #0b4a8f;
+	--cda-accent-fg: #ffffff;
+	--cda-highlight-bg: #fff3b0;
+	--cda-highlight-border: #8a6d00;
+
+	color: var(--cda-fg);
+	background: var(--cda-bg);
+	max-width: 100%;
+	box-sizing: border-box;
+	padding: 1.25rem;
+	border: 1px solid var(--cda-border);
+	border-radius: 8px;
+	font-size: 1rem;
+	line-height: 1.6;
+}
+
+@media (prefers-color-scheme: dark) {
+	.cda-viewer {
+		--cda-fg: #f2f2f2;
+		--cda-bg: #1b1b1b;
+		--cda-border: #9a9a9a;
+		--cda-accent: #6fb3ff;
+		--cda-accent-fg: #0b1a2b;
+		--cda-highlight-bg: #4a3d00;
+		--cda-highlight-border: #ffd84a;
+	}
+}
+
+.cda-viewer.cda-high-contrast {
+	--cda-fg: #000000;
+	--cda-bg: #ffffff;
+	--cda-border: #000000;
+	--cda-accent: #0000ee;
+	--cda-accent-fg: #ffffff;
+	--cda-highlight-bg: #ffff00;
+	--cda-highlight-border: #000000;
+}
+
+@media (prefers-color-scheme: dark) {
+	.cda-viewer.cda-high-contrast {
+		--cda-fg: #ffffff;
+		--cda-bg: #000000;
+		--cda-border: #ffffff;
+		--cda-accent: #ffff00;
+		--cda-accent-fg: #000000;
+	}
+}
+
+.cda-viewer * {
+	box-sizing: inherit;
+}
+
+.cda-visually-hidden {
+	position: absolute !important;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+.cda-skip-link:focus {
+	position: static !important;
+	width: auto;
+	height: auto;
+	margin: 0 0 1rem;
+	padding: 0.5rem 0.75rem;
+	clip: auto;
+	display: inline-block;
+	background: var(--cda-accent);
+	color: var(--cda-accent-fg);
+	border-radius: 4px;
+	text-decoration: none;
+}
+
+.cda-viewer :focus-visible {
+	outline: 3px solid var(--cda-accent);
+	outline-offset: 2px;
+}
+
+.cda-title {
+	margin-top: 0;
+	font-size: 1.5rem;
+}
+
+.cda-meta {
+	color: var(--cda-fg);
+	opacity: 0.8;
+	font-size: 0.9rem;
+}
+
+.cda-toolbar,
+.cda-audio-controls {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.75rem 1.25rem;
+	padding: 0.75rem;
+	margin-bottom: 1rem;
+	border: 1px solid var(--cda-border);
+	border-radius: 6px;
+	background: transparent;
+}
+
+.cda-toolbar-group {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	flex-wrap: wrap;
+}
+
+.cda-toolbar-label {
+	font-size: 0.85rem;
+	font-weight: 600;
+}
+
+.cda-btn {
+	font: inherit;
+	font-size: 0.95rem;
+	color: var(--cda-fg);
+	background: var(--cda-bg);
+	border: 2px solid var(--cda-border);
+	border-radius: 4px;
+	padding: 0.4rem 0.75rem;
+	cursor: pointer;
+	min-height: 44px;
+	min-width: 44px;
+}
+
+.cda-btn:hover {
+	background: var(--cda-accent);
+	color: var(--cda-accent-fg);
+	border-color: var(--cda-accent);
+}
+
+.cda-btn[aria-pressed="true"] {
+	background: var(--cda-accent);
+	color: var(--cda-accent-fg);
+	border-color: var(--cda-accent);
+}
+
+.cda-btn:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+.cda-btn-primary {
+	font-weight: 700;
+}
+
+.cda-field {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+	font-size: 0.85rem;
+	font-weight: 600;
+}
+
+.cda-field select,
+.cda-field input[type="range"] {
+	font: inherit;
+	min-height: 44px;
+}
+
+.cda-status {
+	margin: 0;
+	font-size: 0.9rem;
+	font-style: italic;
+	flex-basis: 100%;
+}
+
+.cda-content {
+	max-width: 70ch;
+	font-size: 1em;
+}
+
+.cda-content :is(h1, h2, h3, h4, h5, h6) {
+	line-height: 1.3;
+}
+
+.cda-content h2.cda-page-title {
+	font-size: 0.9em;
+	font-style: italic;
+	opacity: 0.8;
+	padding: 8px 0;
+}
+
+.cda-content p,
+.cda-content li {
+	margin-bottom: 1em;
+}
+
+.cda-content .cda-reading {
+	background: var(--cda-highlight-bg);
+	border-left: 4px solid var(--cda-highlight-border);
+	padding-left: 0.5em;
+	margin-left: -0.5em;
+}
+
+.cda-content img {
+	max-width: 100%;
+	height: auto;
+}
+
+.cda-content table {
+	width: 100%;
+	max-width: 100%;
+	overflow-x: auto;
+	display: block;
+	border-collapse: collapse;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.cda-viewer * {
+		scroll-behavior: auto !important;
+		transition: none !important;
+		animation: none !important;
+	}
+}
+
+@media (max-width: 480px) {
+	.cda-viewer {
+		padding: 1rem;
+	}
+
+	.cda-toolbar,
+	.cda-audio-controls {
+		flex-direction: column;
+		align-items: stretch;
+	}
+}

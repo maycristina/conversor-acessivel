@@ -1,0 +1,18 @@
+# Nenhum arquivo PHP deste plugin (nem os do Composer em vendor/) deve ser
+# acessado diretamente por URL — o WordPress só os carrega via include/require
+# no servidor. Cada arquivo já tem um guard `if (!defined('ABSPATH')) exit;`,
+# então isso é defesa em profundidade, não a proteção principal. Só tem efeito
+# em Apache/LiteSpeed com AllowOverride habilitado; não se aplica a Nginx.
+<IfModule mod_authz_core.c>
+    <FilesMatch "\.php$">
+        Require all denied
+    </FilesMatch>
+</IfModule>
+<IfModule !mod_authz_core.c>
+    <FilesMatch "\.php$">
+        Order allow,deny
+        Deny from all
+    </FilesMatch>
+</IfModule>
+
+Options -Indexes
