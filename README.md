@@ -116,6 +116,25 @@ composer.json                  Dependências PHP
    **Conversor Acessível > Configurações** para o shortcode `[cda_instalacoes]`
    passar a mostrar o número real de instalações ativas.
 
+### Pasta `.wordpress-org/assets/`
+
+Não faz parte do plugin em si (não vai no zip de instalação) — são os
+materiais visuais da **página** do plugin no diretório do WordPress.org:
+
+- `icon-128x128.png` / `icon-256x256.png` — já gerados.
+- `icon-source.html` — fonte editável do ícone (SVG renderizado via Chromium
+  headless); edite e regenere se quiser mudar o design.
+- `screenshot-1.png`, `screenshot-2.png`, `screenshot-3.png` — **ainda
+  faltam**: são capturas reais da tela de upload, do documento convertido e
+  da listagem de documentos, correspondentes às 3 legendas em `== Screenshots ==`
+  no `readme.txt`. Precisam ser tiradas de uma instalação WordPress real
+  rodando o plugin.
+
+Depois de aprovado no WordPress.org, o conteúdo desta pasta vai para a pasta
+`assets/` do repositório SVN (`https://plugins.svn.wordpress.org/conversor-acessivel/assets/`),
+que é separada da `trunk/` (código) e do `assets/` interno do plugin
+(`assets/css`, `assets/js`).
+
 ## Limitações conhecidas
 
 - `.doc` (Word 97-2003) não é suportado — apenas `.docx`.

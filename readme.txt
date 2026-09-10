@@ -49,6 +49,16 @@ Não. O shortcode `[cda_instalacoes]` consulta a API pública do WordPress.org (
 
 Por padrão, não — o plugin extrai o conteúdo e apaga o arquivo original enviado. Isso pode ser alterado em **Conversor Acessível > Configurações**.
 
+= O plugin envia dados para algum servidor externo? =
+
+Só uma chamada, e só se você usar o shortcode `[cda_instalacoes]`: uma consulta à API pública do próprio WordPress.org (`api.wordpress.org/plugins/info`) para buscar o número de instalações ativas deste plugin. Nenhum dado do seu site, dos seus documentos ou dos seus visitantes é enviado a lugar nenhum.
+
+== Screenshots ==
+
+1. Tela de upload: envio de um PDF/DOCX/TXT para conversão.
+2. Documento convertido, com os controles de tamanho de texto, alto contraste e leitura em voz alta.
+3. Listagem "Todos os Documentos", com a coluna de shortcode de cada conversão.
+
 == Changelog ==
 
 = 1.0.0 =
